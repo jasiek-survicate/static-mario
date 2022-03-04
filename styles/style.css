@@ -1,0 +1,45 @@
+.board-container {
+  position: relative;
+  width: fit-content;
+}
+
+.camera {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.hero {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url(../images/mario.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.hero--left {
+  transform: scaleX(-1);
+}
+
+.block {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+}
+
+.row {
+  display: flex;
+}
+
+.sky {
+  background-color: aquamarine;
+}
+
+.ground {
+  background-color: green;
+}
+
+.brick {
+  background-color: red;
+}
