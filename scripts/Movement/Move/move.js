@@ -1,15 +1,10 @@
 import { boardContainer, BLOCK_SIZE, GRAVITY_ACCELERATION } from "../../game.js";
 
 export const move = (character, coords, currentHeroPosition, board) => {
-    console.log("currentHeroPosition", currentHeroPosition);
     const x = currentHeroPosition[0] + coords[0];
     const y = currentHeroPosition[1] + coords[1];
 
-    console.log("x", x, "y", y)
-  
-    
     const nextBoardElement = board[y][x];  
-    console.log(nextBoardElement, "next board")
     const canMove = nextBoardElement === "·" || nextBoardElement === "M";
   
     if (!canMove) {
