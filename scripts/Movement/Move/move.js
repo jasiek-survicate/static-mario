@@ -11,10 +11,7 @@ export const move = (character, coords, currentHeroPosition, board) => {
       return;
     }
   
-    currentHeroPosition = [
-      currentHeroPosition[0] + coords[0],
-      currentHeroPosition[1] + coords[1]
-    ];
+    currentHeroPosition = [x,y];
   
     character.style.left = `${currentHeroPosition[0] * BLOCK_SIZE}px`;
     character.style.top = `${currentHeroPosition[1] * BLOCK_SIZE}px`;
