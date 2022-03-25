@@ -11,14 +11,20 @@ export const move = (character, coords, currentHeroPosition, board) => {
       return;
     }
   
-    currentHeroPosition = [x,y];
+    sessionStorage.setItem('currentHeroPosition',[x,y]);
   
-    character.style.left = `${currentHeroPosition[0] * BLOCK_SIZE}px`;
-    character.style.top = `${currentHeroPosition[1] * BLOCK_SIZE}px`;
+    character.style.left = `${x * BLOCK_SIZE}px`;
+    character.style.top = `${y * BLOCK_SIZE}px`;
   
-    boardContainer.style.left = `-${currentHeroPosition[0] * BLOCK_SIZE}px`;
-    boardContainer.style.top = `-${currentHeroPosition[1] * BLOCK_SIZE}px`;
+    boardContainer.style.left = `-${x * BLOCK_SIZE}px`;
+    boardContainer.style.top = `-${y * BLOCK_SIZE}px`;
   
     const timeout = coords[1] === -1 ? GRAVITY_ACCELERATION : 0;
-    setTimeout(() => move(character, [0, 1], currentHeroPosition, board), timeout);
+
+
+    setTimeout(() => move(
+      character,
+      [0, 1],
+      [x,y],
+      board), timeout);
   };

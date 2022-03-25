@@ -20,13 +20,18 @@ const y = board.indexOf(heroRow);
 const initialHeroPosition = [x, y];
 const initialBoardPosition = [x + 1, y - 4];
 
-currentHeroPosition = initialHeroPosition
+currentHeroPosition = initialHeroPosition;
+
+sessionStorage.setItem('currentHeroPosition',currentHeroPosition);
 
 const initGame = () => {
   renderBoard(board, initialBoardPosition);
   const hero = createHero();
   releaseHero(hero, initialHeroPosition);
-  addHeroMoveListeners(hero, currentHeroPosition, board);
+  addHeroMoveListeners(
+    hero, 
+    board
+  );
 };
 
 initGame();

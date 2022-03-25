@@ -1,11 +1,15 @@
 import { GRAVITY_ACCELERATION } from '../../game.js';
 import { move } from '../../Movement/Move/move.js';
 
-export const addHeroMoveListeners = (hero, currentHeroPosition, board) => {
+export const addHeroMoveListeners = (hero, board) => {
   let timeSnapshot;
 
   document.addEventListener("keydown", (event) => {
     hero.classList.remove("hero--left");
+
+    const currentHeroPosition = sessionStorage.getItem('currentHeroPosition').split(',').map((num) => {
+      return parseInt(num, 10);
+    });
 
     if (event.key === "ArrowRight") {
       move(hero, [1, 0], currentHeroPosition, board); //tuple
