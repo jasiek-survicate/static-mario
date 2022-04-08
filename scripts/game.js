@@ -26,10 +26,9 @@ sessionStorage.setItem('currentHeroPosition',currentHeroPosition);
 
 const initGame = () => {
   renderBoard(board, initialBoardPosition);
-  const hero = createHero();
-  releaseHero(hero, initialHeroPosition);
+  const hero = new Hero();
   addHeroMoveListeners(
-    hero, 
+    hero,
     board
   );
 };
