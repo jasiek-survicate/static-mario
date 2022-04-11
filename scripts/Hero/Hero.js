@@ -1,9 +1,11 @@
-import { BLOCK_SIZE, boardContainer } from '../game.js';
+import { BLOCK_SIZE } from '../game.js';
+import { Level } from '../Level/Level.js';
 
 export class Hero {
   constructor(initialPosition) {
     this.initialPosition = initialPosition; // [x, y]
     this.currentPosition = initialPosition; // [x, y]
+    this.levelContainer = Level.getLevelContainer();
     this.heroHTML = document.createElement("div");
     this.render();
     this.addMoveListeners()
@@ -11,17 +13,13 @@ export class Hero {
 
   render() {
     this.heroHTML.classList.add("hero");
-
-    boardContainer.appendChild(this.heroHTML);
-
+    this.levelContainer.appendChild(this.heroHTML);
     this.setCSSPosition(this.initialPosition[0] * BLOCK_SIZE, this.initialPosition[1] * BLOCK_SIZE);
   }
 
   move(coords, board) {
     const x = this.currentPosition[0] + coords[0];
     const y = this.currentPosition[1] + coords[1];
-
-
     const nextBoardElement = board[y][x];
     const canMove = nextBoardElement === "·" || nextBoardElement === "M";
 
@@ -30,11 +28,9 @@ export class Hero {
     }
 
     this.currentPosition = [x,y];
-
     this.setCSSPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-
-    boardContainer.style.left = `-${x * BLOCK_SIZE}px`;
-    boardContainer.style.top = `-${y * BLOCK_SIZE}px`;
+    this.levelContainer.style.left = `-${x * BLOCK_SIZE}px`;
+    this.levelContainer.style.top = `-${y * BLOCK_SIZE}px`;
 
     const timeout = coords[1] === -1 ? GRAVITY_ACCELERATION : 0;
 
