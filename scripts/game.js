@@ -1,8 +1,6 @@
 import { boardModel } from "./board.js";
-import { createHero } from "./Hero/CreateHero/createHero.js";
-import { releaseHero } from "./Hero/ReleaseHero/releaseHero.js";
-import { addHeroMoveListeners } from "./Hero/AddHeroMoveListeners/addHeroMoveListeners.js";
 import { renderBoard } from "./Board/RenderBoard/renderBoard.js";
+import { Hero } from "./Hero/Hero.js"
 
 const boardRows = boardModel.split("\n"); // use regex to solve new line issue
 const board = boardRows.filter((row) => row.length).map((row) => row.split(""));
@@ -20,17 +18,10 @@ const y = board.indexOf(heroRow);
 const initialHeroPosition = [x, y];
 const initialBoardPosition = [x + 1, y - 4];
 
-currentHeroPosition = initialHeroPosition;
-
-sessionStorage.setItem('currentHeroPosition',currentHeroPosition);
-
 const initGame = () => {
   renderBoard(board, initialBoardPosition);
-  const hero = new Hero();
-  addHeroMoveListeners(
-    hero,
-    board
-  );
+
+  new Hero(initialHeroPosition);
 };
 
 initGame();
