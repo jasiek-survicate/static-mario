@@ -3,12 +3,17 @@ import { Game } from '../Game/Game.js'
 
 export class Hero {
   constructor(level) {
-    this.initialPosition = level.initialPosition; // [x, y]
-    this.currentPosition = level.initialPosition; // [x, y]
+    this.initialPosition = level.initialHeroPosition; // [x, y]
+    this.currentPosition = level.initialHeroPosition; // [x, y]
     this.levelContainer = Level.getLevelContainer();
     this.heroHTML = document.createElement("div");
     this.render();
     this.addMoveListeners(level.levelObject)
+  }
+
+  setCSSPosition(x, y) {
+    this.heroHTML.style.left = `${x}px`;
+    this.heroHTML.style.top = `${y}px`;
   }
 
   render() {
@@ -68,9 +73,4 @@ export class Hero {
       }
     });
   };
-
-  setCSSPosition(x, y) {
-    this.heroHTML.style.left = `${x}px`;
-    this.heroHTML.style.top = `${y}px`;
-  }
 }
