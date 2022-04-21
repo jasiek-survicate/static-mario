@@ -9,7 +9,7 @@ export class Game {
 
   init() {
     const level = new Level(levelMap);
-    new Hero(level.initialHeroPosition);
+    new Hero(level);
   };
 
   static getGravityAcceleration() {
