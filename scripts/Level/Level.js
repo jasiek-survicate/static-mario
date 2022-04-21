@@ -6,7 +6,7 @@ export class Level {
     this.levelObject = this.levelRows.filter((row) => row.length).map((row) => row.split(""));
     this.initialPosition = this.getInitialLevelPosition();
     this.currentPosition = this.initialPosition;
-    this.levelHTML =  document.querySelector("[data-board-container]");
+    this.levelHTML = document.querySelector("[data-board-container]");
     this.initialHeroPosition = this.getInitialHeroPosition();
   }
 
@@ -16,16 +16,25 @@ export class Level {
     this.levelHTML.style.top = `-${this.initialPosition[1] * BLOCK_SIZE}px`;
   };
 
+  renderRow(row) {
+    const rowElement = document.createElement("div");
+    rowElement.classList.add("row");
+    row.forEach((cell) => {
+      rowElement.appendChild(renderCell(cell));
+    });
+    this.levelHTML.appendChild(rowElement);
+  }
+
   getInitialLevelPosition() {
     const heroPosition = this.getInitialHeroPosition();
     return [heroPosition[0] + 1, heroPosition[1] - 4];
   }
-  
+
   getInitialHeroPosition() {
     const heroRow = this.levelObject.find((row) => row.includes("M"));
-    const x = heroRow.indexOf("M"); 
+    const x = heroRow.indexOf("M");
     const y = this.levelObject.indexOf(heroRow);
-  
+
     return [x,y];
   }
 
