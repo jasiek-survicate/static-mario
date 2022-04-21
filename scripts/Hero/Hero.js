@@ -1,4 +1,5 @@
 import { Level } from '../Level/Level.js';
+import { Game } from '../Game.js'
 
 export class Hero {
   constructor(initialPosition) {
@@ -31,7 +32,7 @@ export class Hero {
     this.levelContainer.style.left = `-${x * Level.getBlockSize()}px`;
     this.levelContainer.style.top = `-${y * Level.getBlockSize()}px`;
 
-    const timeout = coords[1] === -1 ? GRAVITY_ACCELERATION : 0;
+    const timeout = coords[1] === -1 ? GRAVITY_ACCELERATION.getGRAVITY_ACCELERATION() : 0;
 
     setTimeout(() => move([0, 1], board), timeout);
   };
@@ -54,7 +55,7 @@ export class Hero {
       if (event.key === "ArrowUp") {
         const now = Date.now();
 
-        if (now <= timeSnapshot + GRAVITY_ACCELERATION) {
+        if (now <= timeSnapshot + GRAVITY_ACCELERATION.getGRAVITY_ACCELERATION()) {
           return;
         }
 
