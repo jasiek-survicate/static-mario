@@ -1,13 +1,6 @@
-import { Level } from "./Level/Level.js";
-import { Hero } from "./Hero/Hero.js"
-import { levelMap } from "./level_1.js";
-
-const initGame = () => {
-  const level = new Level(levelMap);
-  new Hero(level.initialHeroPosition);
-};
-
-initGame();
+import { Level } from "../Level/Level.js";
+import { Hero } from "../Hero/Hero.js"
+import { levelMap } from "../level_1.js";
 
 export class Game {
   constructor() {
