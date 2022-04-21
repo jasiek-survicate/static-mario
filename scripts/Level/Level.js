@@ -9,10 +9,11 @@ export class Level {
     this.currentPosition = this.initialPosition;
     this.levelHTML = document.querySelector("[data-board-container]");
     this.initialHeroPosition = this.getInitialHeroPosition();
+    this.render();
   }
 
   render() {
-    this.levelObject.forEach((row) => renderRow(row));
+    this.levelObject.forEach((row) => this.renderRow(row));
     this.levelHTML.style.left = `${this.initialPosition[0] * this.BLOCK_SIZE}px`;
     this.levelHTML.style.top = `-${this.initialPosition[1] * this.BLOCK_SIZE}px`;
   };
@@ -21,7 +22,7 @@ export class Level {
     const rowElement = document.createElement("div");
     rowElement.classList.add("row");
     row.forEach((cell) => {
-      rowElement.appendChild(renderCell(cell));
+      rowElement.appendChild(this.renderCell(cell));
     });
     this.levelHTML.appendChild(rowElement);
   }

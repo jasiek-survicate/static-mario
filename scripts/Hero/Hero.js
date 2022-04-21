@@ -34,7 +34,7 @@ export class Hero {
 
     const timeout = coords[1] === -1 ? Game.getGravityAcceleration() : 0;
 
-    setTimeout(() => move([0, 1], board), timeout);
+    setTimeout(() => this.move([0, 1], board), timeout);
   };
 
   addMoveListeners = (board) => {
