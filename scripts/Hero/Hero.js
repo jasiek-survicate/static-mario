@@ -1,5 +1,5 @@
 import { Level } from '../Level/Level.js';
-import { Game } from '../Game.js'
+import { Game } from '../Game/Game.js'
 
 export class Hero {
   constructor(initialPosition) {
