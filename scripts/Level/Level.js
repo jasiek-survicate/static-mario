@@ -1,8 +1,8 @@
-import { BLOCK_SIZE } from "../game.js";
 import { legend } from '../legend.js'
 
 export class Level {
   constructor(levelMap) {
+    this.BLOCK_SIZE = 100;
     this.levelRows = levelMap.split("\n"); // use regex to solve new line issue
     this.levelObject = this.levelRows.filter((row) => row.length).map((row) => row.split(""));
     this.initialPosition = this.getInitialLevelPosition();
@@ -13,8 +13,8 @@ export class Level {
 
   render() {
     this.levelObject.forEach((row) => renderRow(row));
-    this.levelHTML.style.left = `${this.initialPosition[0] * BLOCK_SIZE}px`;
-    this.levelHTML.style.top = `-${this.initialPosition[1] * BLOCK_SIZE}px`;
+    this.levelHTML.style.left = `${this.initialPosition[0] * this.BLOCK_SIZE}px`;
+    this.levelHTML.style.top = `-${this.initialPosition[1] * this.BLOCK_SIZE}px`;
   };
 
   renderRow(row) {
@@ -48,5 +48,9 @@ export class Level {
 
   static getLevelContainer() {
     return document.querySelector("[data-board-container]");
+  }
+
+  static getBlockSize() {
+    return this.BLOCK_SIZE;
   }
 }
