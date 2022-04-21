@@ -2,13 +2,13 @@ import { Level } from '../Level/Level.js';
 import { Game } from '../Game/Game.js'
 
 export class Hero {
-  constructor(initialPosition) {
-    this.initialPosition = initialPosition; // [x, y]
-    this.currentPosition = initialPosition; // [x, y]
+  constructor(level) {
+    this.initialPosition = level.initialPosition; // [x, y]
+    this.currentPosition = level.initialPosition; // [x, y]
     this.levelContainer = Level.getLevelContainer();
     this.heroHTML = document.createElement("div");
     this.render();
-    this.addMoveListeners()
+    this.addMoveListeners(level.levelObject)
   }
 
   render() {
