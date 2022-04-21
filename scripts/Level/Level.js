@@ -1,4 +1,5 @@
 import { BLOCK_SIZE } from "../game.js";
+import { legend } from '../legend.js'
 
 export class Level {
   constructor(levelMap) {
@@ -23,6 +24,13 @@ export class Level {
       rowElement.appendChild(renderCell(cell));
     });
     this.levelHTML.appendChild(rowElement);
+  }
+
+  renderCell(cell) {
+    const div = document.createElement("div");
+    div.classList.add("block");
+    div.classList.add(legend[cell]);
+    return div;
   }
 
   getInitialLevelPosition() {
