@@ -7,11 +7,11 @@ body {
   width: fit-content;
 }
 
-.camera {
+/* .camera {
   width: 800px;
   height: 600px;
   overflow: hidden;
-}
+} */
 
 .hero {
   position: absolute;

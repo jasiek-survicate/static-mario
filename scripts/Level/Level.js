@@ -12,10 +12,14 @@ export class Level {
     this.render();
   }
 
-  render() {
-    this.levelObject.forEach((row) => this.renderRow(row));
+  setInitialPosition() {
     this.levelHTML.style.left = `${this.initialPosition[0] * this.BLOCK_SIZE}px`;
     this.levelHTML.style.top = `-${this.initialPosition[1] * this.BLOCK_SIZE}px`;
+  }
+
+  render() {
+    this.levelObject.forEach((row) => this.renderRow(row));
+    // this.setInitialPosition();
   };
 
   renderRow(row) {
