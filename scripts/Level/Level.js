@@ -19,7 +19,7 @@ export class Level {
 
   render() {
     this.levelObject.forEach((row) => this.renderRow(row));
-    // this.setInitialPosition();
+    this.setInitialPosition();
   };
 
   renderRow(row) {

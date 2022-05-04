@@ -34,8 +34,8 @@ export class Hero {
 
     this.currentPosition = [x,y];
     this.setCSSPosition(x * Level.getBlockSize(), y * Level.getBlockSize());
-    this.levelContainer.style.left = `-${x * Level.getBlockSize()}px`;
-    this.levelContainer.style.top = `-${y * Level.getBlockSize()}px`;
+    this.levelContainer.style.left = `-${(x - 2) * Level.getBlockSize()}px`;
+    this.levelContainer.style.top = `-${(y - 7)* Level.getBlockSize()}px`;
 
     const timeout = coords[1] === -1 ? Game.getGravityAcceleration() : 0;
 
@@ -65,7 +65,7 @@ export class Hero {
         }
 
         timeSnapshot = now;
-        this.move([0, -1], board);
+        this.move([0, -2], board);
       }
 
       if (event.key === "ArrowDown") {
