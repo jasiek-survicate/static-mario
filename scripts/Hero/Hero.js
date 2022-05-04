@@ -7,7 +7,7 @@ export class Hero {
     this.currentPosition = level.initialHeroPosition; // [x, y]
     this.levelContainer = Level.getLevelContainer();
     this.heroHTML = document.createElement("div");
-    this.render(level);
+    this.render();
     this.addMoveListeners(level.levelObject)
   }
 
@@ -16,10 +16,10 @@ export class Hero {
     this.heroHTML.style.top = `${y}px`;
   }
 
-  render(level) {
+  render() {
     this.heroHTML.classList.add("hero");
     this.levelContainer.appendChild(this.heroHTML);
-    this.setCSSPosition(this.initialPosition[0] * level.getBlockSize(), this.initialPosition[1] * level.getBlockSize());
+    this.setCSSPosition(this.initialPosition[0] * Level.getBlockSize(), this.initialPosition[1] * Level.getBlockSize());
   }
 
   move(coords, board) {

@@ -1,8 +1,8 @@
 import { legend } from '../legend.js'
 
 export class Level {
+  static BLOCK_SIZE = 100;
   constructor(levelMap) {
-    this.BLOCK_SIZE = 100;
     this.levelRows = levelMap.split("\n"); // use regex to solve new line issue
     this.levelObject = this.levelRows.filter((row) => row.length).map((row) => row.split(""));
     this.initialPosition = this.getInitialLevelPosition();
@@ -55,7 +55,7 @@ export class Level {
     return document.querySelector("[data-board-container]");
   }
 
-  getBlockSize() {
+  static getBlockSize() {
     return this.BLOCK_SIZE;
   }
 }
