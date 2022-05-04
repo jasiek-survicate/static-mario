@@ -55,7 +55,7 @@ export class Level {
     return document.querySelector("[data-board-container]");
   }
 
-  static getBlockSize() {
+  getBlockSize() {
     return this.BLOCK_SIZE;
   }
 }
