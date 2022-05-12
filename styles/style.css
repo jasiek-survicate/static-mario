@@ -1,5 +1,6 @@
 body {
   background-color: #000;
+  overflow: hidden;
 }
 
 .board-container {
@@ -7,11 +8,11 @@ body {
   width: fit-content;
 }
 
-.camera {
+/* .camera {
   width: 800px;
   height: 600px;
   overflow: hidden;
-}
+} */
 
 .hero {
   position: absolute;
@@ -41,9 +42,15 @@ body {
 }
 
 .ground {
+  background-image: url(../images/grass.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: green;
 }
 
 .brick {
+  background-image: url(../images/bricks.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: red;
 }
