@@ -25,13 +25,7 @@ export class Hero {
   move(coords, board) {
     const x = this.currentPosition[0] + coords[0];
     const y = this.currentPosition[1] + coords[1];
-    let nextBoardElement;
-
-    if (coords[1] === -2) {
-      nextBoardElement = board[y + 1][x];
-    } else {
-      nextBoardElement = board[y][x];
-    }
+    const nextBoardElement = board[y][x];
 
     const canMove = nextBoardElement === "·" || nextBoardElement === "M";
 
@@ -44,15 +38,16 @@ export class Hero {
     this.levelContainer.style.left = `-${(x - 2) * Level.getBlockSize()}px`;
     this.levelContainer.style.top = `-${(y - 7)* Level.getBlockSize()}px`;
 
-    const timeout = coords[1] === -1 ? Game.getGravityAcceleration() : 0;
+    // const timeout = coords[1] === -1 ? Game.getGravityAcceleration() : 0;
 
-    setTimeout(() => this.move([0, 1], board), timeout);
+    // setTimeout(() => this.move([0, 1], board), timeout);
   };
 
   addMoveListeners = (board) => {
     let timeSnapshot;
 
     document.addEventListener("keydown", (event) => {
+      // console.log(event);
       this.heroHTML.classList.remove("hero--left");
 
       if (event.key === "ArrowRight") {
@@ -72,12 +67,18 @@ export class Hero {
         }
 
         timeSnapshot = now;
-        this.move([0, -2], board);
+        this.move([0, -1], board);
       }
 
       if (event.key === "ArrowDown") {
         this.move([0, 1], board);
       }
     });
+
+    document.addEventListener('keyup', (event) => {
+      const timeout = event.key === 'ArrowUp' ? Game.getGravityAcceleration() : 0;
+
+      setTimeout(() => this.move([0, 1], board), timeout);
+    })
   };
 }
