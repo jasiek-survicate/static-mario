@@ -26,11 +26,13 @@ export class Hero {
     const x = this.currentPosition[0] + coords[0];
     const y = this.currentPosition[1] + coords[1];
     let nextBoardElement;
+
     if (coords[1] === -2) {
-      nextBoardElement = board[y - 1][x];
+      nextBoardElement = board[y + 1][x];
     } else {
       nextBoardElement = board[y][x];
     }
+
     const canMove = nextBoardElement === "·" || nextBoardElement === "M";
 
     if (!canMove) {
